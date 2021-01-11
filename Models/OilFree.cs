@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class OilFree
     {
+        [Key]
         public int oilfreeId { get; set; }
         [Required]
         public string oilfreename { get; set; }

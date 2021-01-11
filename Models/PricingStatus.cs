@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class PricingStatus
     {
+        [Key]
         public int statusid { get; set; }
         [Required]
         public string status_type { get; set; }

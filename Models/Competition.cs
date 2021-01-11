@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Competition
     {
+        [Key]
         public int competitionid { get; set; }
         [Required]
         public string competitionname { get; set; }

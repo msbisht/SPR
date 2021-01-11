@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class roles
     {
+        [Key]
         public int roleid { get; set; }
         [Required]
         public string rolename { get; set; }

@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Rotary
     {
+        [Key]
         public int rotaryid { get; set; }
         [Required]
         public string rotary_name { get; set; }

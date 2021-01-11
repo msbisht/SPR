@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class BoughtoutInstrument
     {
+       [Key]
         public int boughtoutid { get; set; }
         [Required]
         public string boughtoutname { get; set; }

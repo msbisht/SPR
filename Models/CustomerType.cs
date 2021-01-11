@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class CustomerType
     {
+        [Key]
         public int customerTypeId { get; set; }
         [Required]
         public string customertypename { get; set; }

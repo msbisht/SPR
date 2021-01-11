@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Industry
     {
+        [Key]
         public int industryid { get; set; }
         [Required]
         public string industrytype { get; set; }

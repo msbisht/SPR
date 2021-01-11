@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class BusinessDivision
     {
+        [Key]
         public int divisionId { get; set; }
         [Required]
         public int  OilfreeId { get; set; }

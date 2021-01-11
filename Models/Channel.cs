@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Channel
     {
+        [Key]
         public int channelid { get; set; }
         [Required]
         public string channelType { get; set; }

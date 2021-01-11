@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Smallair
     {
+        [Key]
         public int smallairid { get; set; }
         [Required]
         public string smallairname { get; set; }

@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Facility
     {
+        [Key]
         public int facilityid { get; set; }
         [Required]
         public string facilityname { get; set; }

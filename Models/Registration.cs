@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Registration
     {
+        [Key]
         public int RegistrationID { get; set; }
         [Required]
         public string name { get; set; }

@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class LRBU
     {
+        [Key]
         public int lrbuid { get; set; }
         [Required]
         public string lrbuname { get; set; }

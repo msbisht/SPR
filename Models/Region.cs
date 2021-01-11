@@ -8,6 +8,7 @@ namespace SPR.Models
 {
     public class Region
     {
+        [Key]
         public int regionid { get; set; }
         [Required]
         public string regiontype { get; set; }
