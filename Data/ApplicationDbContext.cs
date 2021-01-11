@@ -41,6 +41,7 @@ namespace SPR.Data
         public DbSet<SPR.Models.roles> roles { get; set; }
         public DbSet<SPR.Models.Rotary> Rotary { get; set; }
         public DbSet<SPR.Models.Smallair> Smallair { get; set; }
+        public DbSet<SPR.Models.UserProfile> UserProfile { get; set; }
 
 
     }

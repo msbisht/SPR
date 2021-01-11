@@ -465,6 +465,32 @@ namespace SPR.Data.Migrations
                     b.ToTable("Smallair");
                 });
 
+            modelBuilder.Entity("SPR.Models.UserProfile", b =>
+                {
+                    b.Property<int>("UserProfileId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<string>("ConfirmPassword");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("OldPassword");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("ProfilePicture");
+
+                    b.HasKey("UserProfileId");
+
+                    b.ToTable("UserProfile");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
