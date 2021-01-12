@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using SPR.Data;
 using System;
 
-namespace SPR.Data.Migrations
+namespace SPR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210112091756_SPR")]
+    partial class SPR
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -340,6 +341,27 @@ namespace SPR.Data.Migrations
                     b.HasKey("lrbuid");
 
                     b.ToTable("LRBU");
+                });
+
+            modelBuilder.Entity("SPR.Models.NumberSequence", b =>
+                {
+                    b.Property<int>("NumberSequenceId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("LastNumber");
+
+                    b.Property<string>("Module")
+                        .IsRequired();
+
+                    b.Property<string>("NumberSequenceName")
+                        .IsRequired();
+
+                    b.Property<string>("Prefix")
+                        .IsRequired();
+
+                    b.HasKey("NumberSequenceId");
+
+                    b.ToTable("NumberSequence");
                 });
 
             modelBuilder.Entity("SPR.Models.OilFree", b =>

@@ -22,8 +22,9 @@ namespace SPR.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        
 
+        public DbSet<SPR.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<SPR.Models.UserProfile> UserProfile { get; set; }
         public DbSet<SPR.Models.CustomerType> CustomerType { get; set; }
         public DbSet<SPR.Models.AirTreatment> AirTreatment { get; set; }
         public DbSet<SPR.Models.AssignedRoles> AssignedRoles { get; set; }
@@ -41,8 +42,6 @@ namespace SPR.Data
         public DbSet<SPR.Models.roles> roles { get; set; }
         public DbSet<SPR.Models.Rotary> Rotary { get; set; }
         public DbSet<SPR.Models.Smallair> Smallair { get; set; }
-        public DbSet<SPR.Models.UserProfile> UserProfile { get; set; }
-
-
+        public DbSet<SPR.Models.NumberSequence> NumberSequence { get; set; }
     }
 }
