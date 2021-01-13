@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace SPR.Migrations
 {
@@ -13,10 +12,10 @@ namespace SPR.Migrations
                 name: "AirTreatment",
                 columns: table => new
                 {
-                    airtreatmentid = table.Column<int>(type: "int", nullable: false)
+                    airtreatmentid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    treatmentname = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    treatmentname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,10 +26,10 @@ namespace SPR.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,21 +40,21 @@ namespace SPR.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,13 +65,13 @@ namespace SPR.Migrations
                 name: "AssignedRoles",
                 columns: table => new
                 {
-                    assignedrolesid = table.Column<int>(type: "int", nullable: false)
+                    assignedrolesid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RegistrationID = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    assignto = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    assignto = table.Column<string>(nullable: false),
+                    Status = table.Column<string>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    RegistrationID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,10 +82,10 @@ namespace SPR.Migrations
                 name: "BoughtoutInstrument",
                 columns: table => new
                 {
-                    boughtoutid = table.Column<int>(type: "int", nullable: false)
+                    boughtoutid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    boughtoutname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    boughtoutname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -97,14 +96,10 @@ namespace SPR.Migrations
                 name: "BusinessDivision",
                 columns: table => new
                 {
-                    divisionId = table.Column<int>(type: "int", nullable: false)
+                    divisionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    OilfreeId = table.Column<int>(type: "int", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    divisionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lrbuId = table.Column<int>(type: "int", nullable: false),
-                    rotaryId = table.Column<int>(type: "int", nullable: false),
-                    smallairId = table.Column<int>(type: "int", nullable: false)
+                    divisionName = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,10 +110,10 @@ namespace SPR.Migrations
                 name: "Channel",
                 columns: table => new
                 {
-                    channelid = table.Column<int>(type: "int", nullable: false)
+                    channelid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    channelType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    channelType = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,10 +124,10 @@ namespace SPR.Migrations
                 name: "Competition",
                 columns: table => new
                 {
-                    competitionid = table.Column<int>(type: "int", nullable: false)
+                    competitionid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    competitionname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    competitionname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,10 +138,10 @@ namespace SPR.Migrations
                 name: "CustomerType",
                 columns: table => new
                 {
-                    customerTypeId = table.Column<int>(type: "int", nullable: false)
+                    customerTypeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    customertypename = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    customertypename = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -157,10 +152,10 @@ namespace SPR.Migrations
                 name: "Facility",
                 columns: table => new
                 {
-                    facilityid = table.Column<int>(type: "int", nullable: false)
+                    facilityid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    facilityname = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    facilityname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -171,10 +166,10 @@ namespace SPR.Migrations
                 name: "Industry",
                 columns: table => new
                 {
-                    industryid = table.Column<int>(type: "int", nullable: false)
+                    industryid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    industrytype = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    industrytype = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -185,10 +180,10 @@ namespace SPR.Migrations
                 name: "LRBU",
                 columns: table => new
                 {
-                    lrbuid = table.Column<int>(type: "int", nullable: false)
+                    lrbuid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lrbuname = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    lrbuname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -199,12 +194,12 @@ namespace SPR.Migrations
                 name: "NumberSequence",
                 columns: table => new
                 {
-                    NumberSequenceId = table.Column<int>(type: "int", nullable: false)
+                    NumberSequenceId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastNumber = table.Column<int>(type: "int", nullable: false),
-                    Module = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumberSequenceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Prefix = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NumberSequenceName = table.Column<string>(nullable: false),
+                    Module = table.Column<string>(nullable: false),
+                    Prefix = table.Column<string>(nullable: false),
+                    LastNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,10 +210,10 @@ namespace SPR.Migrations
                 name: "OilFree",
                 columns: table => new
                 {
-                    oilfreeId = table.Column<int>(type: "int", nullable: false)
+                    oilfreeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    oilfreename = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    oilfreename = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -229,10 +224,10 @@ namespace SPR.Migrations
                 name: "PricingStatus",
                 columns: table => new
                 {
-                    statusid = table.Column<int>(type: "int", nullable: false)
+                    statusid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    status_type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    status_type = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -243,10 +238,10 @@ namespace SPR.Migrations
                 name: "Region",
                 columns: table => new
                 {
-                    regionid = table.Column<int>(type: "int", nullable: false)
+                    regionid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    regiontype = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    regiontype = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -257,20 +252,20 @@ namespace SPR.Migrations
                 name: "Registration",
                 columns: table => new
                 {
-                    RegistrationID = table.Column<int>(type: "int", nullable: false)
+                    RegistrationID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    confirmpassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    createdOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    emailid = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    emplooyeeid = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    forcechangepassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    mobileno = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    roleID = table.Column<int>(type: "int", nullable: false),
-                    username = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    name = table.Column<string>(nullable: false),
+                    mobileno = table.Column<string>(nullable: true),
+                    emailid = table.Column<string>(nullable: true),
+                    username = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true),
+                    confirmpassword = table.Column<string>(nullable: true),
+                    gender = table.Column<string>(nullable: true),
+                    birthdate = table.Column<DateTime>(nullable: false),
+                    roleID = table.Column<int>(nullable: false),
+                    createdOn = table.Column<DateTime>(nullable: false),
+                    emplooyeeid = table.Column<string>(nullable: true),
+                    forcechangepassword = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -281,9 +276,9 @@ namespace SPR.Migrations
                 name: "roles",
                 columns: table => new
                 {
-                    roleid = table.Column<int>(type: "int", nullable: false)
+                    roleid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    rolename = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    rolename = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -294,10 +289,10 @@ namespace SPR.Migrations
                 name: "Rotary",
                 columns: table => new
                 {
-                    rotaryid = table.Column<int>(type: "int", nullable: false)
+                    rotaryid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    rotary_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    rotary_name = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -308,10 +303,10 @@ namespace SPR.Migrations
                 name: "Smallair",
                 columns: table => new
                 {
-                    smallairid = table.Column<int>(type: "int", nullable: false)
+                    smallairid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    smallairname = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    smallairname = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -322,16 +317,16 @@ namespace SPR.Migrations
                 name: "UserProfile",
                 columns: table => new
                 {
-                    UserProfileId = table.Column<int>(type: "int", nullable: false)
+                    UserProfileId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OldPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    ConfirmPassword = table.Column<string>(nullable: true),
+                    OldPassword = table.Column<string>(nullable: true),
+                    ProfilePicture = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -342,11 +337,11 @@ namespace SPR.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    RoleId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -363,11 +358,11 @@ namespace SPR.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -384,10 +379,10 @@ namespace SPR.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
+                    ProviderDisplayName = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -404,8 +399,8 @@ namespace SPR.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -428,10 +423,10 @@ namespace SPR.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
