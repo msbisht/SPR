@@ -11,7 +11,7 @@ namespace SPR.Models
         [Key]
         public int rotaryid { get; set; }
         [Required]
-        public string rotary_name { get; set; }
+        public string rotaryname { get; set; }
         public string description { get; set; }
     }
 }

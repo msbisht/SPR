@@ -460,7 +460,7 @@ namespace SPR.Migrations
 
                     b.Property<string>("description");
 
-                    b.Property<string>("rotary_name")
+                    b.Property<string>("rotaryname")
                         .IsRequired();
 
                     b.HasKey("rotaryid");

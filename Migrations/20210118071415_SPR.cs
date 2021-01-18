@@ -291,7 +291,7 @@ namespace SPR.Migrations
                 {
                     rotaryid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    rotary_name = table.Column<string>(nullable: false),
+                    rotaryname = table.Column<string>(nullable: false),
                     description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

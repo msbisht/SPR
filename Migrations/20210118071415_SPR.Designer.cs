@@ -10,7 +10,7 @@ using SPR.Data;
 namespace SPR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210113095610_SPR")]
+    [Migration("20210118071415_SPR")]
     partial class SPR
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -462,7 +462,7 @@ namespace SPR.Migrations
 
                     b.Property<string>("description");
 
-                    b.Property<string>("rotary_name")
+                    b.Property<string>("rotaryname")
                         .IsRequired();
 
                     b.HasKey("rotaryid");

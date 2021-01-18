@@ -15,7 +15,7 @@ namespace SPR.Controllers.Api
     [Authorize]
     [Produces("application/json")]
     [Route("api/Industry")]
-    public class IndustryController : ControllerBase
+    public class IndustryController : Controller
     {
 
         private readonly ApplicationDbContext _context;
