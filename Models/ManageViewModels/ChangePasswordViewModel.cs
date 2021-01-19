@@ -25,5 +25,7 @@ namespace SPR.Models.ManageViewModels
         public string ConfirmPassword { get; set; }
 
         public string StatusMessage { get; set; }
+
+        public string Id { get; set; }
     }
 }
